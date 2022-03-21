@@ -1,11 +1,10 @@
-﻿@{
+﻿@model List<ContatoModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="d-grid gap-2 d-md flex-column justify-content-md-start">
-    <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="CriarContato">Adicionar contato</a>
-    <a role="button" class="btn btn-danger">Apagar</a>
-    <a role ="button" class="btn btn-success" asp-controller="Home" asp-action="EditarContato">Modificar</a>    
+    <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="CriarContato">Adicionar contato</a> 
 </div>
 <div class="text-center">
     <h1>Contatos</h1> 
@@ -15,23 +14,33 @@
       <th scope="col">#</th>
       <th scope="col">Nome </th>
       <th scope="col">Sobrenome</th>
+      <th scope="col">E-mail</th>
       <th scope="col">Telefones</th>
       <th scope="col">Observação</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row"><input type="checkbox" />1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td></td>
-      <td></td>
-      <td><!---<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-  <a role="button" class="btn btn-danger">Apagar</a>
-  <a role ="button" class="btn btn-success">Modificar</a>
-</div>---></td>
+    @if (Model != null && Model.Any())
+    {
+        foreach(ContatoModel contato in Model)
+        {
+       <tr>
+      <th scope="row"><input type="checkbox" />@contato.id</th>
+      <td>@contato.Nome</td>
+      <td>@contato.sobrenome</td>
+      <td>@contato.email</td>
+      <td>@contato.telefone</td>
+      <td>@contato.observacao</td>
+      <td>
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <a role="button" class="btn btn-danger" asp-route-id="@contato.id" asp-controller="Home" asp-action="ApagarContato">Apagar</a>
+  <a role ="button" class="btn btn-success" asp-route-id="@contato.id" asp-controller="Home" asp-action="EditarContato">Modificar</a>
+    </div></td>
     </tr>
+        }
+
+    }
   </tbody>
 </table>
 </div>

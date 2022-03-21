@@ -12,15 +12,15 @@ namespace ListaDeContatos.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IContatoRepositiorio _contatoRepositorio;
-        public HomeController(IContatoRepositiorio contatoRepositiorio)
+        private readonly IContatoRepositorio _contatoRepositorio;
+        public HomeController(IContatoRepositorio contatoRepositorio)
         {
-            _contatoRepositorio = contatoRepositiorio;
+            _contatoRepositorio = contatoRepositorio;
         }
-
         public IActionResult Index()
         {
-            return View();
+            List<ContatoModel> contatos = _contatoRepositorio.GetContatoList().ToList();
+            return View(contatos);
         }
 
         public IActionResult CriarContato()
@@ -28,20 +28,34 @@ namespace ListaDeContatos.Controllers
             return View();
         }
 
-        public IActionResult EditarContato()
+        public IActionResult EditarContato(int id)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.ListarPorId(id);
+            return View(contato);
         }
 
-        public IActionResult ApagarContato()
+        public IActionResult ApagarContato(int id)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.ListarPorId(id);
+            return View(contato);
         }
 
+        public IActionResult Apagar(int id)
+        {
+            _contatoRepositorio.Apagar(id);
+            return RedirectToAction("Index");
+        }
         [HttpPost]
         public IActionResult Criar(ContatoModel contato)
         {
             _contatoRepositorio.Adicionar(contato);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(ContatoModel contato)
+        {
+            _contatoRepositorio.Atualizar(contato);
             return RedirectToAction("Index");
         }
     }
