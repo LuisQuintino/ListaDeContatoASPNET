@@ -24,7 +24,7 @@
 </div>
 <div class="text-center text-light">
     <h1>Contatos</h1> 
- <table class="table table-striped table-hover text-light">
+ <table class="table table-striped text-success">
    <thead>
     <tr>
       <th scope="col">#</th>
@@ -42,7 +42,7 @@
         foreach(ContatoModel contato in Model)
         {
        <tr>
-      <th scope="row"><input type="checkbox" />@contato.id</th>
+      <th scope="row">@contato.id</th>
       <td>@contato.Nome</td>
       <td>@contato.sobrenome</td>
       <td>@contato.email</td>
