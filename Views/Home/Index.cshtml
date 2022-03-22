@@ -49,10 +49,10 @@
       <td>@contato.telefone</td>
       <td>@contato.observacao</td>
       <td>
-    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-  <a role="button" class="btn btn-danger" asp-route-id="@contato.id" asp-controller="Home" asp-action="ApagarContato">Apagar</a>
-  <a role ="button" class="btn btn-success" asp-route-id="@contato.id" asp-controller="Home" asp-action="EditarContato">Modificar</a>
-    </div></td>
+
+  <a role="button" class="btn btn-outline-danger" asp-route-id="@contato.id" asp-controller="Home" asp-action="ApagarContato">Apagar</a>
+  <a role ="button" class="btn btn-outline-success" asp-route-id="@contato.id" asp-controller="Home" asp-action="EditarContato">Modificar</a>
+      </td>
     </tr>
         }
 
@@ -63,5 +63,5 @@
 <br />
 <br />
 <div class="d-grid gap-2 d-md flex-column justify-content-md-start">
-    <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="CriarContato">Adicionar contato</a> 
+    <a class="btn btn-outline-primary" role="button" asp-controller="Home" asp-action="CriarContato">Adicionar contato</a> 
 </div>
