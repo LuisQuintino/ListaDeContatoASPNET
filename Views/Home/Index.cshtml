@@ -27,7 +27,6 @@
  <table class="table table-striped text-success">
    <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nome </th>
       <th scope="col">Sobrenome</th>
       <th scope="col">E-mail</th>
@@ -42,8 +41,7 @@
         foreach(ContatoModel contato in Model)
         {
        <tr>
-      <th scope="row">@contato.id</th>
-      <td>@contato.Nome</td>
+      <th scope="row">@contato.Nome</th>
       <td>@contato.sobrenome</td>
       <td>@contato.email</td>
       <td>@contato.telefone</td>
