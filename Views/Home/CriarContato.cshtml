@@ -2,29 +2,34 @@
 @{
     ViewData["Title"] = "Adicionar contato";
 }
-
+<br />
+<br />
 <div class="text-center">
     <h1>Adicionar contato</h1> 
 </div>
  <form asp-controller="Home" asp-action="Criar" method="post">
   <div class="form-group">
       <label for="nome">Nome</label>
-     <input type="text" asp-for="Nome" class="form-control" placeholder="Nome" >
+     <input type="text" asp-for="Nome" class="form-control" placeholder="Nome">
+     @Html.ValidationMessageFor(o => o.Nome)
   </div>
   <div class="form-group">
       <label for="sobrenome">Sobrenome</label>
      <input type="text" asp-for="sobrenome" class="form-control" placeholder="Sobrenome">
-  </div>
+    @Html.ValidationMessageFor(o => o.sobrenome)
+ </div>
   <div class="form-group">
       
       <label for="exampleInputEmail1">Email address</label>
     <input type="email" asp-for="email" class="form-control"  placeholder="Enter email">
-  </div>
+    @Html.ValidationMessageFor(o => o.email) 
+</div>
     <div class="form-group">
       
       <label for="telefone">Telefone</label>
-    <input type="text" asp-for="telefone" class="form-control" placeholder="Digite o celular">
-  </div>
+    <input type="text" asp-for="telefone" class="form-control" placeholder="Digite o celular" id="telefone">
+    @Html.ValidationMessageFor(o => o.telefone)  
+</div>
   <div class="form-group">
     <label for="observacao">Observação</label>
     <textarea asp-for="observacao" class="form-control" rows="3"></textarea>
@@ -32,3 +37,6 @@
   <button type="submit" class="btn btn-primary">Adicionar contato</button>
   <a class="btn btn-secondary" role="button" asp-controller="Home" asp-action="Index">Voltar</a>
 </form>
+<script>
+$("#telefone").mask("(99) 99999-9999")
+</script>
